@@ -1,19 +1,24 @@
 import axios from 'axios'
 import PhotoCard from './PhotoCard'
+import { useEffect, useState } from 'react'
 
 function HomePage(){
     const apiKey = import.meta.env.VITE_API_KEY
-    console.log(apiKey)
+    const [photo, setPhoto] = useState({})
 
-    axios.get(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
-    .then(response => {
-    console.log(response.data);
-    
-  });
+    useEffect(() => {
+        const fetchDailyPhoto = async () => {
+            const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
+            console.log(response.data)
+            setPhoto(response.data)
+        }
+        fetchDailyPhoto()
+    }, [])
     return(
         <PhotoCard
-        url='https://media1.tenor.com/m/B8rKEjDfDjwAAAAd/cat-clown.gif'
-        title='clown_cat'
+        url={photo.url}
+        title={photo.title}
+        copyright={photo.copyright}
         />
     )
 }

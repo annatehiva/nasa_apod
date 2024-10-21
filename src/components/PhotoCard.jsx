@@ -15,11 +15,15 @@ function PhotoCard(props) {
           sx={{ height: 140 }}
           image={props.url}
           title={props.title}
+          component='img'
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {props.title}
           </Typography>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            {props.copyright}
+        </Typography>
         </CardContent>
         <CardActions>
           <Button size="small">Share</Button>
