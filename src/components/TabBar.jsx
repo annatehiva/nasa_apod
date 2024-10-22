@@ -25,7 +25,12 @@ function TabBar() {
           component={Link}
           to="/gallery"
         />
-        <BottomNavigationAction label="Search" icon={<SearchIcon />} />
+        <BottomNavigationAction
+          label="Search"
+          icon={<SearchIcon />}
+          component={Link}
+          to="/search"
+        />
       </BottomNavigation>
     </Paper>
   );
