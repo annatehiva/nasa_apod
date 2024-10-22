@@ -1,21 +1,43 @@
 import { ImageList, ImageListItem } from "@mui/material";
-import { Link } from "react-router-dom";
+import ModalPhoto from "./ModalPhoto";
+import { useState } from "react";
 
 function PhotoList({ photos }) {
+  const [open, setOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+
+  const handleOpen = (photo) => {
+    setSelectedPhoto(photo);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedPhoto(null);
+  };
+
   return (
-    <ImageList cols={5}>
-      {photos.map((photo, date) => (
-        <Link to={`/photo/${date}`} key={date}>
-          <ImageListItem key={photo.date}>
+    <>
+      <ImageList cols={6}>
+        {photos.map((photo) => (
+          <ImageListItem key={photo.url}>
             <img
-              src={photo.url}
+              src={`${photo.url}`}
               alt={photo.title}
+              onClick={() => handleOpen(photo)}
               style={{ cursor: "pointer" }}
             />
           </ImageListItem>
-        </Link>
-      ))}
-    </ImageList>
+        ))}
+      </ImageList>
+      {selectedPhoto && (
+        <ModalPhoto
+          open={open}
+          handleClose={handleClose}
+          photo={selectedPhoto}
+        />
+      )}
+    </>
   );
 }
 

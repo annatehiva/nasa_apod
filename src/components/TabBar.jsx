@@ -4,6 +4,7 @@ import Paper from "@mui/material/Paper";
 import HomeIcon from "@mui/icons-material/Home";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
 
 function TabBar() {
   return (
@@ -12,8 +13,18 @@ function TabBar() {
       elevation={12}
     >
       <BottomNavigation>
-        <BottomNavigationAction label="Homepage" icon={<HomeIcon />} />
-        <BottomNavigationAction label="Gallery" icon={<CollectionsIcon />} />
+        <BottomNavigationAction
+          label="Homepage"
+          icon={<HomeIcon />}
+          component={Link}
+          to="/"
+        />
+        <BottomNavigationAction
+          label="Gallery"
+          icon={<CollectionsIcon />}
+          component={Link}
+          to="/gallery"
+        />
         <BottomNavigationAction label="Search" icon={<SearchIcon />} />
       </BottomNavigation>
     </Paper>
