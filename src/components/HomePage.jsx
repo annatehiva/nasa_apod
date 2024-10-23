@@ -1,6 +1,7 @@
 import axios from "axios";
 import PhotoCard from "./PhotoCard";
 import { useEffect, useState } from "react";
+import { Box } from "@mui/material";
 
 function HomePage() {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -17,11 +18,20 @@ function HomePage() {
     fetchDailyPhoto();
   }, []);
   return (
-    <PhotoCard
-      url={photo.url}
-      title={photo.title}
-      copyright={photo.copyright}
-    />
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh", //
+      }}
+    >
+      <PhotoCard
+        url={photo.url}
+        title={photo.title}
+        copyright={photo.copyright}
+      />
+    </Box>
   );
 }
 export default HomePage;
