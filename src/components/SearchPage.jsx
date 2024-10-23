@@ -17,6 +17,7 @@ function SearchPage() {
   return (
     <>
       <DatePicker onDateChange={fetchData} />
+
       {data && (
         <PhotoCard
           url={data.url}

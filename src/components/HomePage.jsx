@@ -2,10 +2,12 @@ import axios from "axios";
 import PhotoCard from "./PhotoCard";
 import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
+import LoadingSpinner from "./LoadingSpinner";
 
 function HomePage() {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [photo, setPhoto] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchDailyPhoto = async () => {
@@ -14,24 +16,40 @@ function HomePage() {
       );
       console.log(response.data);
       setPhoto(response.data);
+      setLoading(false);
     };
     fetchDailyPhoto();
   }, []);
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh", //
-      }}
-    >
-      <PhotoCard
-        url={photo.url}
-        title={photo.title}
-        copyright={photo.copyright}
-      />
-    </Box>
+    <>
+      {loading ? (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <LoadingSpinner />
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh", //
+          }}
+        >
+          <PhotoCard
+            url={photo.url}
+            title={photo.title}
+            copyright={photo.copyright}
+          />
+        </Box>
+      )}
+    </>
   );
 }
 export default HomePage;
