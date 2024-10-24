@@ -23,6 +23,7 @@ function SearchPage() {
           url={data.url}
           title={data.title}
           copyright={data.copyright}
+          media_type={data.media_type}
         />
       )}
     </>

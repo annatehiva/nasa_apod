@@ -8,17 +8,7 @@ import {
 } from "@mui/material";
 import ShareButton from "./ShareButton";
 
-function PhotoCard({ url, title, copyright }) {
-  const getYoutubeThumbnail = (url) => {
-    if (!url.includes("youtube.com/embed/")) {
-      return null;
-    }
-    const videoId = url?.split("embed/")[1].split("?")[0];
-    console.log(videoId);
-    return videoId ? `https://img.youtube.com/vi/${videoId}/0.jpg` : null;
-  };
-  const thumbnailUrl = url ? getYoutubeThumbnail(url) : url;
-
+function PhotoCard({ url, title, copyright, media_type }) {
   return (
     <Box
       sx={{
@@ -28,12 +18,19 @@ function PhotoCard({ url, title, copyright }) {
       }}
     >
       <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          sx={{ height: 140 }}
-          image={thumbnailUrl || url}
-          title={title}
-          component="img"
-        />
+        {media_type === "image" ? (
+          <CardMedia
+            sx={{ height: 140 }}
+            image={url}
+            title={title}
+            component="img"
+          />
+        ) : media_type === "video" ? (
+          <video width="100%" height="140" controls>
+            <source src={url} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        ) : null}
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
@@ -43,7 +40,7 @@ function PhotoCard({ url, title, copyright }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <ShareButton url={thumbnailUrl || url} />
+          <ShareButton url={url} />
         </CardActions>
       </Card>
     </Box>

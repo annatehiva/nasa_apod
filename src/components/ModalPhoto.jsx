@@ -23,6 +23,7 @@ function ModalPhoto({ open, handleClose, photo }) {
           url={photo.url}
           title={photo.title}
           copyright={photo.copyright}
+          media_type={photo.media_type}
         />
       </Box>
     </Modal>
