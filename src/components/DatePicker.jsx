@@ -7,12 +7,13 @@ import dayjs from "dayjs";
 
 function DatePicker({ onDateChange }) {
   const [selectedDate, setSelectedDate] = useState(dayjs());
-
+  const minDate = dayjs("1995-06-16");
+  const maxDate = dayjs();
   const handleDateChange = (date) => {
     setSelectedDate(date);
     if (date) {
       const formattedDate = date.format("YYYY-MM-DD");
-      onDateChange(formattedDate); // Appel de la fonction passée depuis SearchPage
+      onDateChange(formattedDate);
     }
   };
 
@@ -27,8 +28,10 @@ function DatePicker({ onDateChange }) {
     >
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <MobileDatePicker
-          defaultValue={dayjs("2022-04-17")}
+          defaultValue={dayjs()}
           label="Select Date"
+          minDate={minDate}
+          maxDate={maxDate}
           value={selectedDate}
           onChange={handleDateChange}
           renderInput={(params) => <TextField {...params} />}
