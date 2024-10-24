@@ -6,11 +6,16 @@ import { Box, TextField } from "@mui/material";
 import dayjs from "dayjs";
 
 function DatePicker({ onDateChange }) {
+  // Manage currently selected date
   const [selectedDate, setSelectedDate] = useState(dayjs());
+
+  // Define minimum and maximum allowed dates
   const minDate = dayjs("1995-06-16");
   const maxDate = dayjs();
+
+  // Handler for date change
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    setSelectedDate(date); //update selected date in the state
     if (date) {
       const formattedDate = date.format("YYYY-MM-DD");
       onDateChange(formattedDate);
@@ -33,7 +38,7 @@ function DatePicker({ onDateChange }) {
           minDate={minDate}
           maxDate={maxDate}
           value={selectedDate}
-          onChange={handleDateChange}
+          onChange={handleDateChange} //call handler when date changes
           renderInput={(params) => <TextField {...params} />}
         />
       </LocalizationProvider>

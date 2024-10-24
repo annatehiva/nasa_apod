@@ -9,12 +9,17 @@ function GalleryPage() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Function to load more photos when the user scrolls
   const loadMorePhotos = async () => {
     const response = await axios.get(
       `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&count=20`
     );
+
+    // Append newly fetched photos to existing lsit
     setPhotos((prevPhotos) => [...prevPhotos, ...response.data]);
   };
+
+  // fetch initial set of photos
   useEffect(() => {
     const fetchPhotos = async () => {
       const response = await axios.get(

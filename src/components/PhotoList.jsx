@@ -5,17 +5,18 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import LoadingSpinner from "./LoadingSpinner";
 
 function PhotoList({ photos, loadMore }) {
+  //  manage state of modal (open or close)
   const [open, setOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [items, setItems] = useState(photos.slice(0, 20));
-  const [hasMore, setHasMore] = useState(true);
 
+  // Handle modal opening
   const handleOpen = (photoData) => {
     setSelectedPhoto(photoData);
     setOpen(true);
     console.log(photoData);
   };
 
+  // Handle modal closing
   const handleClose = () => {
     setOpen(false);
     setSelectedPhoto(null);
@@ -33,8 +34,8 @@ function PhotoList({ photos, loadMore }) {
         <ImageList
           cols={6}
           sx={{
-            overflow: "hidden", // Empêche PhotoList d'avoir une barre de défilement
-            height: "auto", // Permet d'ajuster la taille automatiquement
+            overflow: "hidden", // Prevents PhotoList from having a scrollbar
+            height: "auto",
           }}
         >
           {photos.map((photo) => (
@@ -49,6 +50,7 @@ function PhotoList({ photos, loadMore }) {
           ))}
         </ImageList>
       </InfiniteScroll>
+      {/* modal if photo is selected */}
       {selectedPhoto && (
         <ModalPhoto
           open={open}

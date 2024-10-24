@@ -9,6 +9,7 @@ function HomePage() {
   const [photo, setPhoto] = useState({});
   const [loading, setLoading] = useState(true);
 
+  //  fetch daily photo
   useEffect(() => {
     const fetchDailyPhoto = async () => {
       const response = await axios.get(

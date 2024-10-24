@@ -18,7 +18,6 @@ function Header() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Toolbar />
     </>
   );
 }

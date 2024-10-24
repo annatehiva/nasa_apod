@@ -7,6 +7,7 @@ function SearchPage() {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [data, setData] = useState(null);
 
+  // fetch data for specific date
   const fetchData = async (date) => {
     const response = await axios.get(
       `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`
