@@ -3,10 +3,10 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Button,
   Typography,
   Box,
 } from "@mui/material";
+import ShareButton from "./ShareButton";
 
 function PhotoCard({ url, title, copyright }) {
   const getYoutubeThumbnail = (url) => {
@@ -43,7 +43,7 @@ function PhotoCard({ url, title, copyright }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Share</Button>
+          <ShareButton url={thumbnailUrl || url} />
         </CardActions>
       </Card>
     </Box>
