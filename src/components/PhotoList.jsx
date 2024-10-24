@@ -28,6 +28,7 @@ function PhotoList({ photos, loadMore }) {
         next={loadMore}
         hasMore={true}
         loader={<LoadingSpinner />}
+        style={{ overflow: "visible" }}
       >
         <ImageList
           cols={6}
