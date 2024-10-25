@@ -1,5 +1,5 @@
-import DatePicker from "./DatePicker";
-import PhotoCard from "./PhotoCard";
+import DatePicker from "../components/DatePicker";
+import PhotoCard from "../components/PhotoCard";
 import { useState } from "react";
 import axios from "axios";
 

@@ -1,8 +1,8 @@
 import axios from "axios";
-import PhotoCard from "./PhotoCard";
+import PhotoCard from "../components/PhotoCard";
 import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 function HomePage() {
   const apiKey = import.meta.env.VITE_API_KEY;

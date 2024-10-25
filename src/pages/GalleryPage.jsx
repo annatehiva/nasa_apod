@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { Box, Typography } from "@mui/material";
-import PhotoList from "./PhotoList";
-import LoadingSpinner from "./LoadingSpinner";
+import PhotoList from "../components/PhotoList";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 function GalleryPage() {
   const apiKey = import.meta.env.VITE_API_KEY;

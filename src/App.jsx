@@ -1,7 +1,7 @@
 import Header from "./components/Header";
-import HomePage from "./components/HomePage";
-import GalleryPage from "./components/GalleryPage";
-import SearchPage from "./components/SearchPage";
+import HomePage from "./pages/HomePage";
+import GalleryPage from "./pages/GalleryPage.jsx";
+import SearchPage from "./pages/SearchPage";
 import TabBar from "./components/TabBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
