@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Box, Typography, Link } from "@mui/material";
 function Header() {
   return (
     <>
-      <AppBar position="fixed">
+      <AppBar position="fixed" sx={{ bgcolor: "#0b3d91" }}>
         <Toolbar>
           <Box
             sx={{

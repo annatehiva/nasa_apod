@@ -39,7 +39,9 @@ function PhotoCard({ url, title, copyright, media_type }) {
             {title}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {copyright}
+            {copyright
+              ? copyright
+              : "National Aeronautics and Space Administration"}
           </Typography>
         </CardContent>
         <CardActions>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Modal, Box } from "@mui/material";
 import PhotoCard from "./PhotoCard";
 
@@ -14,7 +13,7 @@ function ModalPhoto({ open, handleClose, photo }) {
           maxWidth: "90vw",
           maxHeight: "90vh",
           width: "auto",
-          bgcolor: "background.paper",
+          bgcolor: "transparent",
           boxShadow: 24,
           p: 4,
         }}

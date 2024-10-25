@@ -39,8 +39,15 @@ function ShareButton({ url }) {
         <Button
           onClick={() => handleClick(SlideTransition)} //Open Snackbar on button click
           variant="contained"
-          color={copied ? "success" : "primary"}
-          sx={{ margin: "0.5rem 0" }}
+          color={copied ? "success" : "#0b3d91"}
+          sx={{
+            margin: "0.5rem 0",
+            color: "white",
+            bgcolor: copied ? "success.main" : "#0b3d91", // Custom color for the button
+            "&:hover": {
+              bgcolor: copied ? "success.dark" : "#0a2e6e", // Darker shade on hover
+            },
+          }}
         >
           {copied ? "Copied!" : "Share"} {/*Button text changes*/}
         </Button>
