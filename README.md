@@ -7,7 +7,7 @@ This project is a web application that allows users to view NASA's Astronomy Pic
 ## Features
 
 - **Date Picker**: Select any date from 1995 to the current day to view the APOD for that date.
-- **Media Display**: View images and videos, with appropriate thumbnails based on the media type.
+- **Media Display**: View content from APOD API.
 - **Infinite Scrolling**: Load more photos as you scroll down the gallery.
 - **Sharing**: Easily share the media link using the share button.
 
