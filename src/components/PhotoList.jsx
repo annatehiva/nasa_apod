@@ -32,7 +32,7 @@ function PhotoList({ photos, loadMore }) {
         style={{ overflow: "visible" }}
       >
         <ImageList
-          cols={6}
+          cols={3}
           sx={{
             overflow: "hidden",
             height: "auto",
