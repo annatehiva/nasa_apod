@@ -9,6 +9,16 @@ import {
 import ShareButton from "./ShareButton";
 
 function PhotoCard({ url, title, copyright, media_type }) {
+  let imageSrc;
+
+  // Set image source based on media type
+  if (media_type === "video") {
+    imageSrc = "src/assets/video_type.png";
+  } else if (media_type === "other") {
+    imageSrc = "src/assets/nasa.png";
+  } else {
+    imageSrc = url;
+  }
   return (
     <Box
       sx={{
@@ -18,19 +28,12 @@ function PhotoCard({ url, title, copyright, media_type }) {
       }}
     >
       <Card sx={{ maxWidth: 345 }}>
-        {media_type === "image" ? (
-          <CardMedia
-            sx={{ height: 140 }}
-            image={url}
-            title={title}
-            component="img"
-          />
-        ) : media_type === "video" ? (
-          <video width="100%" height="140" controls>
-            <source src={url} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : null}
+        <CardMedia
+          sx={{ height: 140 }}
+          image={imageSrc}
+          title={title}
+          component="img"
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}

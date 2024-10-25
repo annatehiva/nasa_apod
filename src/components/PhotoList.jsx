@@ -34,23 +34,35 @@ function PhotoList({ photos, loadMore }) {
         <ImageList
           cols={6}
           sx={{
-            overflow: "hidden", // Prevents PhotoList from having a scrollbar
+            overflow: "hidden",
             height: "auto",
           }}
         >
-          {photos.map((photo) => (
-            <ImageListItem key={photo.url}>
-              <img
-                src={`${photo.url}`}
-                alt={photo.title}
-                onClick={() => handleOpen(photo)}
-                style={{ cursor: "pointer" }}
-              />
-            </ImageListItem>
-          ))}
+          {photos.map((photo) => {
+            let imageSrc;
+
+            if (photo.media_type === "video") {
+              imageSrc = "src/assets/video_type.png";
+            } else if (photo.media_type === "other") {
+              imageSrc = "src/assets/nasa.png";
+            } else {
+              imageSrc = photo.url;
+            }
+
+            return (
+              <ImageListItem key={photo.url}>
+                <img
+                  src={imageSrc}
+                  alt={photo.title}
+                  onClick={() => handleOpen(photo)}
+                  style={{ cursor: "pointer" }}
+                />
+              </ImageListItem>
+            );
+          })}
         </ImageList>
       </InfiniteScroll>
-      {/* modal if photo is selected */}
+
       {selectedPhoto && (
         <ModalPhoto
           open={open}
@@ -61,5 +73,4 @@ function PhotoList({ photos, loadMore }) {
     </>
   );
 }
-
 export default PhotoList;
