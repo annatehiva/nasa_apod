@@ -8,19 +8,25 @@ function HomePage() {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [photo, setPhoto] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   //  fetch daily photo
   useEffect(() => {
     const fetchDailyPhoto = async () => {
-      const response = await axios.get(
-        `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
-      );
-      console.log(response.data);
-      setPhoto(response.data);
+      try {
+        const response = await axios.get(
+          `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
+        );
+        console.log(response.data);
+        setPhoto(response.data);
+      } catch (err) {
+        setError("Failed to load photo");
+      }
       setLoading(false);
     };
     fetchDailyPhoto();
   }, []);
+
   return (
     <>
       {loading ? (
@@ -34,13 +40,24 @@ function HomePage() {
         >
           <LoadingSpinner />
         </Box>
+      ) : error ? (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <Typography color="error">{error}</Typography>
+        </Box>
       ) : (
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "100vh", //
+            height: "100vh",
           }}
         >
           <PhotoCard
